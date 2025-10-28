@@ -16,9 +16,8 @@ contract Cluster is ManageCluster {
         // note however, that mappings may need reworking as they always use asset address as key.
         cluster.assets = [
             USDC,
-            USDT,
-            rlUSD,
-            sBUIDL
+            ynRWAx,
+            ynUSDx
         ];
     }
 
@@ -27,10 +26,11 @@ contract Cluster is ManageCluster {
         cluster.oracleRoutersGovernor = cluster.vaultsGovernor = governorAddresses.accessControlEmergencyGovernor;
 
         // define unit of account here
-        cluster.unitOfAccount = USD;
+        cluster.unitOfAccount = USDC;
 
         // define fee receiver here and interest fee here. if needed to be defined per asset, populate the feeReceiverOverride and interestFeeOverride mappings
-        cluster.feeReceiver = address(0);
+        // YieldNest ETH L1 Mainnet Fee Receiver
+        cluster.feeReceiver = 0xC92Dd1837EBcb0365eB0a8795f9c8E474f8B6183;
         cluster.interestFee = 0.1e4;
 
         // define max liquidation discount here. if needed to be defined per asset, populate the maxLiquidationDiscountOverride mapping
@@ -55,22 +55,24 @@ contract Cluster is ManageCluster {
         // External Vaults Registry, the string should be preceeded by "ExternalVault|" prefix. this is in order to resolve 
         // the asset (vault) in the oracle router.
         // in case the adapter is not present in the Adapter Registry, the adapter address can be passed instead in form of a string.
-        cluster.oracleProviders[USDC  ] = "0x6213f24332D35519039f2afa7e3BffE105a37d3F";
-        cluster.oracleProviders[USDT  ] = "0x587CABe0521f5065b561A6e68c25f338eD037FF9";
-        cluster.oracleProviders[rlUSD ] = "0xEC5658937fb08a9105016f181A1C833d859deEDC";
-        cluster.oracleProviders[sBUIDL] = "0xe8a784f4bdcd4707baf4068e72887888ad58c033";
+
+        // FixedRate oracle for USDC (rates are in USDC)
+        cluster.oracleProviders[USDC  ] = "0xb92b9341be191895e8c68b170ac4528839ffe0b2";
+
+        // TODO: fix this to have the correct oracle provider
+        cluster.oracleProviders[ynRWAx  ] = "ExternalVault";
+        // TODO: fix this to have the correct oracle provider
+        cluster.oracleProviders[ynUSDx ] = "ExternalVault";
 
         // define supply caps here. 0 means no supply can occur, type(uint256).max means no cap defined hence max amount
-        cluster.supplyCaps[USDC  ] = 100_000_000; 
-        cluster.supplyCaps[USDT  ] = 100_000_000;
-        cluster.supplyCaps[rlUSD ] = 100_000_000;
-        cluster.supplyCaps[sBUIDL] = 1_100_000;
+        cluster.supplyCaps[USDC  ] = type(uint256).max; 
+        cluster.supplyCaps[ynRWAx  ] = type(uint256).max;
+        cluster.supplyCaps[ynUSDx ] = type(uint256).max;
 
         // define borrow caps here. 0 means no borrow can occur, type(uint256).max means no cap defined hence max amount
-        cluster.borrowCaps[USDC  ] = 90_000_00;
-        cluster.borrowCaps[USDT  ] = 90_000_00;
-        cluster.borrowCaps[rlUSD ] = 90_000_00;
-        cluster.borrowCaps[sBUIDL] = type(uint256).max;
+        cluster.borrowCaps[USDC  ] = type(uint256).max;
+        cluster.borrowCaps[ynRWAx  ] = type(uint256).max;
+        cluster.borrowCaps[ynUSDx ] = type(uint256).max;
 
         // define IRM classes here and assign them to the assets
         {
@@ -93,9 +95,8 @@ contract Cluster is ManageCluster {
         //               0               1       2       3
         //               USDC            USDT    RLUSD   sBUIDL
         /* 0  USDC   */ [uint16(0.00e4), 0.95e4, 0.95e4, 0.00e4],
-        /* 1  USDT   */ [uint16(0.95e4), 0.00e4, 0.95e4, 0.00e4],
-        /* 2  RLUSD  */ [uint16(0.95e4), 0.95e4, 0.00e4, 0.00e4],
-        /* 3  sBUIDL */ [uint16(0.95e4), 0.95e4, 0.95e4, 0.00e4]
+        /* 1  ynRWAx   */ [uint16(0.95e4), 0.00e4, 0.95e4, 0.00e4],
+        /* 2  ynUSDx  */ [uint16(0.95e4), 0.95e4, 0.00e4, 0.00e4]
         ];
     }
 
