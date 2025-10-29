@@ -57,7 +57,7 @@ contract Cluster is ManageCluster {
         // in case the adapter is not present in the Adapter Registry, the adapter address can be passed instead in form of a string.
 
         // FixedRate oracle for USDC (rates are in USDC)
-        cluster.oracleProviders[USDC  ] = "0xb92b9341be191895e8c68b170ac4528839ffe0b2";
+        cluster.oracleProviders[USDC  ] = "0xB92B9341be191895e8C68b170aC4528839fFe0b2";
 
         // TODO: fix this to have the correct oracle provider
         cluster.oracleProviders[ynRWAx  ] = "ExternalVault|0xB92B9341be191895e8C68b170aC4528839fFe0b2";
@@ -92,8 +92,8 @@ contract Cluster is ManageCluster {
     
         // define ltv values here. columns are liability vaults, rows are collateral vaults
         cluster.ltvs = [
-        //               0               1       2       3
-        //               USDC            ynRWAx    RLUSD   sBUIDL
+        //               0               1       2      
+        //               USDC            ynRWAx    ynUSDx  
         /* 0  USDC   */ [uint16(0.00e4), 0.95e4, 0.95e4],
         /* 1  ynRWAx   */ [uint16(0.95e4), 0.00e4, 0.95e4],
         /* 2  ynUSDx  */ [uint16(0.95e4), 0.95e4, 0.00e4]
