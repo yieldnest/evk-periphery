@@ -60,9 +60,9 @@ contract Cluster is ManageCluster {
         cluster.oracleProviders[USDC  ] = "0xb92b9341be191895e8c68b170ac4528839ffe0b2";
 
         // TODO: fix this to have the correct oracle provider
-        cluster.oracleProviders[ynRWAx  ] = "ExternalVault";
+        cluster.oracleProviders[ynRWAx  ] = "ExternalVault|0xB92B9341be191895e8C68b170aC4528839fFe0b2";
         // TODO: fix this to have the correct oracle provider
-        cluster.oracleProviders[ynUSDx ] = "ExternalVault";
+        cluster.oracleProviders[ynUSDx ] = "ExternalVault|0xB92B9341be191895e8C68b170aC4528839fFe0b2";
 
         // define supply caps here. 0 means no supply can occur, type(uint256).max means no cap defined hence max amount
         cluster.supplyCaps[USDC  ] = type(uint256).max; 
