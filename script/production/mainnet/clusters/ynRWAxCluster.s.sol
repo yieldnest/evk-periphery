@@ -80,8 +80,8 @@ contract Cluster is ManageCluster {
             uint256[4] memory irm = [uint256(0), uint256(345139759), uint256(7205461616), uint256(3865470566)];
             
             cluster.kinkIRMParams[USDC  ] = irm;
-            cluster.kinkIRMParams[USDT  ] = irm;
-            cluster.kinkIRMParams[rlUSD ] = irm;
+            cluster.kinkIRMParams[ynRWAx  ] = irm;
+            cluster.kinkIRMParams[ynUSDx ] = irm;
         }
 
         // define the ramp duration to be used, in case the liquidation LTVs have to be ramped down
@@ -93,7 +93,7 @@ contract Cluster is ManageCluster {
         // define ltv values here. columns are liability vaults, rows are collateral vaults
         cluster.ltvs = [
         //               0               1       2       3
-        //               USDC            USDT    RLUSD   sBUIDL
+        //               USDC            ynRWAx    RLUSD   sBUIDL
         /* 0  USDC   */ [uint16(0.00e4), 0.95e4, 0.95e4, 0.00e4],
         /* 1  ynRWAx   */ [uint16(0.95e4), 0.00e4, 0.95e4, 0.00e4],
         /* 2  ynUSDx  */ [uint16(0.95e4), 0.95e4, 0.00e4, 0.00e4]
