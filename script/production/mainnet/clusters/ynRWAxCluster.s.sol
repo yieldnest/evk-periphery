@@ -94,9 +94,9 @@ contract Cluster is ManageCluster {
         cluster.ltvs = [
         //               0               1       2       3
         //               USDC            ynRWAx    RLUSD   sBUIDL
-        /* 0  USDC   */ [uint16(0.00e4), 0.95e4, 0.95e4, 0.00e4],
-        /* 1  ynRWAx   */ [uint16(0.95e4), 0.00e4, 0.95e4, 0.00e4],
-        /* 2  ynUSDx  */ [uint16(0.95e4), 0.95e4, 0.00e4, 0.00e4]
+        /* 0  USDC   */ [uint16(0.00e4), 0.95e4, 0.95e4],
+        /* 1  ynRWAx   */ [uint16(0.95e4), 0.00e4, 0.95e4],
+        /* 2  ynUSDx  */ [uint16(0.95e4), 0.95e4, 0.00e4]
         ];
     }
 
